@@ -1,76 +1,79 @@
 package com.example.guesswho.constants
 
+import androidx.core.content.ContextCompat.getDrawable
+import com.example.guesswho.R
+
 object Singleton{
     val characters = mutableListOf<Character>()
     val questions = mutableListOf<String>()
     init {
-        characters.add(0,Character("Baby Bowser", "R.drawable.babybowser.png"))
-        characters.add(1,Character("Bayonetta", "R.drawable.bayonetta.png"))
-        characters.add(2,Character("Bowser", "R.drawable.bowser.png"))
-        characters.add(3,Character("Byleth", "R.drawable.byleth.png"))
-        characters.add(4,Character("Captain Falcon", "R.drawable.captainfalcon.png"))
-        characters.add(5,Character("Cloud", "R.drawable.cloud.png"))
-        characters.add(6,Character("Corrin", "R.drawable.corrin.png"))
-        characters.add(7,Character("Dark Samus", "R.drawable.darksamus.png"))
-        characters.add(8,Character("Diddy Kong", "R.drawable.diddykong.png"))
-        characters.add(9,Character("Donkey Kong", "R.drawable.dk.png"))
-        characters.add(10,Character("Dr. Mario", "R.drawable.drmario.png"))
-        characters.add(11,Character("Duck Hunt", "R.drawable.duckhunt.png"))
-        characters.add(12,Character("Falco", "R.drawable.falco.png"))
-        characters.add(13,Character("Fox", "R.drawable.fox.png"))
-        characters.add(14,Character("Ganon", "R.drawable.ganon.png"))
-        characters.add(15,Character("Greninja", "R.drawable.greninja.png"))
-        characters.add(16,Character("Ice Climbers", "R.drawable.iceclimbers.png"))
-        characters.add(17,Character("Incineroar", "R.drawable.incineroar.png"))
-        characters.add(18,Character("Jigglypuff", "R.drawable.jigglypuff.png"))
-        characters.add(19,Character("Ken", "R.drawable.ken.png"))
-        characters.add(20,Character("King Dedede", "R.drawable.kingdedede.png"))
-        characters.add(21,Character("King K. Rool", "R.drawable.kingkrool.png"))
-        characters.add(22,Character("Kirby", "R.drawable.kirby.png"))
-        characters.add(23,Character("Link", "R.drawable.link.png"))
-        characters.add(24,Character("Little Mac", "R.drawable.littlemac.png"))
-        characters.add(25,Character("Lucario", "R.drawable.lucario.png"))
-        characters.add(26,Character("Lucas", "R.drawable.lucas.png"))
-        characters.add(27,Character("Lucina", "R.drawable.lucina.png"))
-        characters.add(28,Character("Luigi", "R.drawable.luigi.png"))
-        characters.add(29,Character("Mario", "R.drawable.mario.png"))
-        characters.add(30,Character("Marth", "R.drawable.marth.png"))
-        characters.add(31,Character("Megaman", "R.drawable.megaman.png"))
-        characters.add(32,Character("Meta Knight", "R.drawable.metaknight.png"))
-        characters.add(33,Character("Mewtwo", "R.drawable.mewtwo.png"))
-        characters.add(34,Character("Mii Fighter", "R.drawable.miifighter.png"))
-        characters.add(35,Character("Mr. Game and Watch", "R.drawable.mrgameandwatch.png"))
-        characters.add(36,Character("Ness", "R.drawable.ness.png"))
-        characters.add(37,Character("Pacman", "R.drawable.pacman.png"))
-        characters.add(38,Character("Palutena", "R.drawable.palutena.png"))
-        characters.add(39,Character("Pichu", "R.drawable.pichu.png"))
-        characters.add(40,Character("Pikachu", "R.drawable.pikachu.png"))
-        characters.add(41,Character("Pit", "R.drawable.pit.png"))
-        characters.add(42,Character("Pokemon Trainer", "R.drawable.pokemontrainer.png"))
-        characters.add(43,Character("Princess Daisy", "R.drawable.princessdaisy.png"))
-        characters.add(44,Character("Princess Peach", "R.drawable.princesspeach.png"))
-        characters.add(45,Character("Princess Rosalina", "R.drawable.princessrosalina.png"))
-        characters.add(46,Character("Richter Belmont", "R.drawable.richterbelmont.png"))
-        characters.add(47,Character("Ridley", "R.drawable.ridley.png"))
-        characters.add(48,Character("Rob", "R.drawable.rob.png"))
-        characters.add(49,Character("Roy", "R.drawable.roy.png"))
-        characters.add(50,Character("Ryu", "R.drawable.ryu.png"))
-        characters.add(51,Character("Samus", "R.drawable.samus.png"))
-        characters.add(52,Character("Sheik", "R.drawable.sheik.png"))
-        characters.add(53,Character("Shulk", "R.drawable.shulk.png"))
-        characters.add(54,Character("Simon Belmont", "R.drawable.simonbelmont.png"))
-        characters.add(55,Character("Snake", "R.drawable.snake.png"))
-        characters.add(56,Character("Sonic", "R.drawable.sonic.png"))
-        characters.add(57,Character("Squid Girl", "R.drawable.squidgirl.png"))
-        characters.add(58,Character("Toon Link", "R.drawable.toonlink.png"))
-        characters.add(59,Character("Villager", "R.drawable.villager.png"))
-        characters.add(60,Character("Wario", "R.drawable.wario.png"))
-        characters.add(61,Character("Wii Fit Trainer", "R.drawable.wiifittrainer.png"))
-        characters.add(62,Character("Wolf", "R.drawable.wolf.png"))
-        characters.add(63,Character("Yoshi", "R.drawable.yoshi.png"))
-        characters.add(64,Character("Young Link", "R.drawable.younglink.png"))
-        characters.add(65,Character("Zelda", "R.drawable.zelda.png"))
-        characters.add(66,Character("Zero Suit Samus", "R.drawable.zerosuitsamus.png"))
+        characters.add(0,Character("Baby Bowser", R.drawable.babybowser))
+        characters.add(1,Character("Bayonetta", R.drawable.bayonetta))
+        characters.add(2,Character("Bowser", R.drawable.bowser))
+        characters.add(3,Character("Byleth", R.drawable.byleth))
+        characters.add(4,Character("Captain Falcon", R.drawable.captainfalcon))
+        characters.add(5,Character("Cloud", R.drawable.cloud))
+        characters.add(6,Character("Corrin", R.drawable.corrin))
+        characters.add(7,Character("Dark Samus", R.drawable.darksamus))
+        characters.add(8,Character("Diddy Kong", R.drawable.diddykong))
+        characters.add(9,Character("Donkey Kong", R.drawable.dk))
+        characters.add(10,Character("Dr. Mario", R.drawable.drmario))
+        characters.add(11,Character("Duck Hunt", R.drawable.duckhunt))
+        characters.add(12,Character("Falco", R.drawable.falco))
+        characters.add(13,Character("Fox", R.drawable.fox))
+        characters.add(14,Character("Ganon", R.drawable.ganon))
+        characters.add(15,Character("Greninja", R.drawable.greninja))
+        characters.add(16,Character("Ice Climbers", R.drawable.iceclimbers))
+        characters.add(17,Character("Incineroar", R.drawable.incineroar))
+        characters.add(18,Character("Jigglypuff", R.drawable.jigglypuff))
+        characters.add(19,Character("Ken", R.drawable.ken))
+        characters.add(20,Character("King Dedede", R.drawable.kingdedede))
+        characters.add(21,Character("King K. Rool", R.drawable.kingkrool))
+        characters.add(22,Character("Kirby", R.drawable.kirby))
+        characters.add(23,Character("Link", R.drawable.link))
+        characters.add(24,Character("Little Mac", R.drawable.littlemac))
+        characters.add(25,Character("Lucario", R.drawable.lucario))
+        characters.add(26,Character("Lucas", R.drawable.lucas))
+        characters.add(27,Character("Lucina", R.drawable.lucina))
+        characters.add(28,Character("Luigi", R.drawable.luigi))
+        characters.add(29,Character("Mario", R.drawable.mario))
+        characters.add(30,Character("Marth", R.drawable.marth))
+        characters.add(31,Character("Megaman", R.drawable.megaman))
+        characters.add(32,Character("Meta Knight", R.drawable.metaknight))
+        characters.add(33,Character("Mewtwo", R.drawable.mewtwo))
+        characters.add(34,Character("Mii Fighter", R.drawable.miifighter))
+        characters.add(35,Character("Mr. Game and Watch", R.drawable.mrgameandwatch))
+        characters.add(36,Character("Ness", R.drawable.ness))
+        characters.add(37,Character("Pacman", R.drawable.pacman))
+        characters.add(38,Character("Palutena", R.drawable.palutena))
+        characters.add(39,Character("Pichu", R.drawable.pichu))
+        characters.add(40,Character("Pikachu", R.drawable.pikachu))
+        characters.add(41,Character("Pit", R.drawable.pit))
+        characters.add(42,Character("Pokemon Trainer", R.drawable.pokemontrainer))
+        characters.add(43,Character("Princess Daisy", R.drawable.princessdaisy))
+        characters.add(44,Character("Princess Peach", R.drawable.princesspeach))
+        characters.add(45,Character("Princess Rosalina", R.drawable.princessrosalina))
+        characters.add(46,Character("Richter Belmont", R.drawable.richterbelmont))
+        characters.add(47,Character("Ridley", R.drawable.ridley))
+        characters.add(48,Character("Rob", R.drawable.rob))
+        characters.add(49,Character("Roy", R.drawable.roy))
+        characters.add(50,Character("Ryu", R.drawable.ryu))
+        characters.add(51,Character("Samus", R.drawable.samus))
+        characters.add(52,Character("Sheik", R.drawable.sheik))
+        characters.add(53,Character("Shulk", R.drawable.shulk))
+        characters.add(54,Character("Simon Belmont", R.drawable.simonbelmont))
+        characters.add(55,Character("Snake", R.drawable.snake))
+        characters.add(56,Character("Sonic", R.drawable.sonic))
+        characters.add(57,Character("Squid Girl", R.drawable.squidgirl))
+        characters.add(58,Character("Toon Link", R.drawable.toonlink))
+        characters.add(59,Character("Villager", R.drawable.villager))
+        characters.add(60,Character("Wario", R.drawable.wario))
+        characters.add(61,Character("Wii Fit Trainer", R.drawable.wiifittrainer))
+        characters.add(62,Character("Wolf", R.drawable.wolf))
+        characters.add(63,Character("Yoshi", R.drawable.yoshi))
+        characters.add(64,Character("Young Link", R.drawable.younglink))
+        characters.add(65,Character("Zelda", R.drawable.zelda))
+        characters.add(66,Character("Zero Suit Samus", R.drawable.zerosuitsamus))
         questions.add(0,"Is the character a human?")
         questions.add(1, "Is the character a Male?")
         questions.add(2, "Is the character Good?")
@@ -87,8 +90,28 @@ object Singleton{
         return characters[index];
     }
 
-    fun getCharacterQuestion(index: Int): Boolean{
-        return characters.
+    fun getCharacterQuestion(index: Int, questionIndex: Int): Boolean{
+        return characters[index].getQuestion(questionIndex)
+    }
+
+    fun getQuestion(index: Int): String{
+        return questions[index]
+    }
+
+    fun getNumberOfQuestions(): Int{
+        var i = 0
+        for (question in questions){
+            i++
+        }
+        return i
+    }
+
+    fun getNumberOfCharacters(): Int{
+        var i = 0
+        for (character in characters){
+            i++
+        }
+        return i
     }
 
     private fun initQuestions(){

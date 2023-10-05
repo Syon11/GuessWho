@@ -1,9 +1,11 @@
 package com.example.guesswho.constants
 
-class Character (name: String, drawableLocation: String){
+import android.graphics.drawable.Drawable
+
+class Character (name: String, drawable: Int){
     private val name = name
-    private val drawableLocation = drawableLocation
     private var values = BooleanArray(9)
+    private var drawableID = drawable;
 
     fun setQuestion(number: Int){
         values[number] = true;
@@ -17,7 +19,7 @@ class Character (name: String, drawableLocation: String){
         return name
     }
 
-    fun getDrawableLocation(): String{
-        return drawableLocation
+    fun getDrawableLocation(): Int{
+        return drawableID
     }
 }

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GuessWho</string>
+    <string-array name="questions">
+        <item>Is the character a human?</item>
+        <item>Is the character a Male?</item>
+        <item>Is the character Good?</item>
+        <item>Is the character wearing something on their head?</item>
+        <item>Does the character have Hair?</item>
+        <item>Does the character wear Clothes?</item>
+        <item>Does the character talk?</item>
+        <item>Can the character use supernatural abilities?</item>
+        <item>Is the character high-tech?</item>
+    </string-array>
 </resources>
