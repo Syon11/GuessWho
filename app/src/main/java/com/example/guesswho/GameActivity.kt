@@ -1,20 +1,17 @@
 package com.example.guesswho
 
-import android.graphics.Point
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.Display
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.ScrollView
 import android.widget.Spinner
 import android.widget.TextView
 import com.example.guesswho.constants.Character
@@ -23,20 +20,34 @@ import com.example.guesswho.constants.Singleton
 class GameActivity : AppCompatActivity() {
 
 
-    var listOfDrawables = mutableListOf<Drawable>()
-
     var numberOfCharacters = Singleton.getNumberOfCharacters()
-    var numberOfQuestions = Singleton.getNumberOfQuestions()
 
     lateinit var spinner: Spinner
     lateinit var adapter: ArrayAdapter<CharSequence>
-
-
+    lateinit var lblAttempts: TextView
+    lateinit var confirmButton: Button
+    lateinit var submitButton: Button
+    var diff = 0
+    var attempts = 0
+    var selectedID = 999
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        diff = intent.getIntExtra("Difficulty", 0)
+        initRemainingAttempts()
         setContentView(R.layout.game)
-        drawCharacters()
+        lblAttempts = findViewById(R.id.idRemainingAttempts)
+        lblAttempts.text = attempts.toString()
+        confirmButton = findViewById(R.id.confirmButton)
+        confirmButton.setOnClickListener {
+            checkOffCharacters(0)
+        }
+        submitButton = findViewById(R.id.submitButton)
+        submitButton.isEnabled = false
+        submitButton.setOnClickListener {
+
+        }
+        initCharacters()
         setSpinner();
 
     }
@@ -46,9 +57,26 @@ class GameActivity : AppCompatActivity() {
         adapter = ArrayAdapter.createFromResource(this, R.array.questions, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         spinner.adapter = adapter
+        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when (spinner.selectedItem) {
+                    "Is the character a human?" -> selectedID = 0
+                    "Is the character a Male?" -> selectedID = 1
+                    "Is the character Good?" -> selectedID = 2
+                    "Is the character wearing something on their head?" -> selectedID = 3
+                    "Does the character have Hair?" -> selectedID = 4
+                    "Does the character wear Clothes?" -> selectedID = 5
+                    "Does the character talk?" -> selectedID = 6
+                    "Can the character use supernatural abilities?" -> selectedID = 7
+                    "Is the character high-tech?" -> selectedID = 8
+                }
+            }
+        }
     }
 
-    private fun drawCharacters() {
+    private fun initCharacters() {
         var done = false
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -72,8 +100,8 @@ class GameActivity : AppCompatActivity() {
             }
         }
     }
-    private fun toggleButton(button: Button){
-        button.isEnabled = !button.isEnabled
+    private fun activateButton(button: Button){
+        button.isEnabled = true
     }
     private fun createTextView(width: Int, height: Int, character: Character): TextView{
         var textView = TextView(this)
@@ -95,16 +123,41 @@ class GameActivity : AppCompatActivity() {
         return imageView
     }
 
-    private fun createCard(parent: LinearLayout, index: Int): LinearLayout{
+    private fun createCard(parent: LinearLayout, index: Int){
         var verticalLayout = LinearLayout(this)
         verticalLayout.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         verticalLayout.orientation = LinearLayout.VERTICAL
         verticalLayout.gravity = Gravity.CENTER
+        verticalLayout.id = index + 25565
         parent.addView(verticalLayout)
+        verticalLayout.setOnClickListener {
+            selectedID = index
+            activateButton(submitButton)
+        }
         var character: Character = Singleton.getCharacter(index)
-
         verticalLayout.addView(createImageView(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, character));
         verticalLayout.addView(createTextView(300, ViewGroup.LayoutParams.WRAP_CONTENT, character))
 
     }
+
+    private fun initRemainingAttempts() {
+        if (diff == 0) {
+            attempts = 7
+        } else if (diff == 1) {
+            attempts = 5
+        } else {
+            attempts = 3
+        }
+    }
+
+    private fun checkOffCharacters(questionID: Int) {
+        attempts--
+        if (attempts == 0) {
+            confirmButton.isEnabled = false
+        }
+        for (i in 0..<Singleton.getNumberOfCharacters()) {
+
+        }
+    }
+
 }
